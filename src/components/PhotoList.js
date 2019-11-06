@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-// import PhotoCard from './PhotoCard';
-// import Date from './Date';
 import getDateArray from '../DateArray';
 
 function PhotoList() {
 
   const dateArray = getDateArray('1995-06-17', new Date() );
   const today = dateArray[dateArray.length - 1];
-  // console.log(dateArray);
   const [photo, setPhoto] = useState('');
   const [date, setDate] = useState(today);
   const [dateIndex, setDateIndex] = useState(dateArray.length - 1)
@@ -18,7 +15,6 @@ function PhotoList() {
       .then( response => {
         console.log(response);
         setPhoto(response.data);
-        // const parsedDate = parseDate(photo.date);
       })
       .catch( error => console.log('Oops!', error));
   }, [date])
@@ -33,7 +29,12 @@ function PhotoList() {
                   setDateIndex(dateIndex - 1);
                   setDate(dateArray[dateIndex])
                 }}>Previous day's photo</button>
-         <button className='next change-img-button'>Next day's photo</button>
+         <button className='next change-img-button'
+                onClick={ () => {
+                  setDateIndex(dateIndex + 1);
+                  setDate(dateArray[dateIndex])
+                }}
+                >Next day's photo</button>
        </div>
        <img src={photo.url}/>
        <p>{photo.explanation}</p>
@@ -43,15 +44,72 @@ function PhotoList() {
 
 
 function parseDate(dateStr) {
-  const newStr = dateStr.split('-').join('');
-  return newStr;
+  let [year, month, day] = dateStr.split('-');
+  switch(month) {
+    case '01':
+      month = 'January';
+      break;
+    
+    case '02':
+      month = 'February';
+      break;
+
+    case '03':
+      month = 'March';
+      break;
+
+    case '04':
+      month = 'April';
+      break;
+
+    case '05':
+      month = 'May';
+      break;
+
+    case '06':
+      month = 'June';
+      break;
+
+    case '07':
+      month = 'July';
+      break;
+
+    case '08':
+      month = 'August';
+      break;
+
+    case '09':
+      month = 'September';
+      break;
+
+    case '10':
+      month = 'October';
+      break;
+
+    case '11':
+      month = 'November';
+      break;
+
+    case '12':
+      month = 'December';
+  }
+  
+  day = removeLeadingZero(day);
+  return `${day} ${month} ${year}`
 
   //TO DO!
 
 //   console.log(newStr);
 }
 
-
+function removeLeadingZero(str){
+  if ( str[0] === '0' ) {
+    return str.slice(1);
+  }
+  else {
+    return str;
+  }
+}
 
 
 

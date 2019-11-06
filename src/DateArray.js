@@ -7,10 +7,6 @@ function addLeadingZero(str) {
   }
 }
 
-// let startDate = new Date('1996-06-16');
-// let startDate = new Date('2018-12-30');
-// let endDate = new Date();
-
 function getDateArray(start, end) {
   let arr = [];
   let date = new Date(start);
@@ -22,8 +18,6 @@ function getDateArray(start, end) {
     let month = addLeadingZero( (currDate.getMonth() + 1).toString() );
     let day = addLeadingZero( currDate.getDate().toString() );
     let fullStr = `${year}-${month}-${day}`;
-    // arr.push( new Date(date) );
-    // arr.push(year);
     arr.push(fullStr);
     date.setDate(date.getDate() + 1);
   }
@@ -32,6 +26,3 @@ function getDateArray(start, end) {
 }
 
 export default getDateArray;
-
-// const fullArray = getDateArray(startDate, endDate);
-// console.log(fullArray);

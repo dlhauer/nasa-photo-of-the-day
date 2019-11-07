@@ -3,6 +3,7 @@ import axios from 'axios';
 import getDateArray from '../DateArray';
 import Button from './Button';
 import Header from './Header';
+import Description from './Description';
 
 function PhotoList() {
 
@@ -33,9 +34,6 @@ function PhotoList() {
 
   return (
      <div className='photos-container'>
-       {/* <h2>{photo.title}</h2>
-       <h3>{photo.copyright}</h3> 
-       <h3>{parseDate(date)}</h3> */}
       <Header title={photo.title} 
               owner={photo.copyright}
               date={parseDate(date)}/>
@@ -49,7 +47,8 @@ function PhotoList() {
        </div>
 
        <img src={photo.url}/>
-       <p>{photo.explanation}</p>
+       <Description content={photo.explanation}/>
+       {/* <p>{photo.explanation}</p> */}
     </div>
   );
 };

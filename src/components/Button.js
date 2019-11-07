@@ -6,18 +6,19 @@ function Button(props) {
     background-color: #2196f3;
     border: 1px solid #2196f3;
     color: white;
-    height: 2rem;
+    width: 150px;
+    height: auto;
     border-radius: 5px;
     font-size: 1.3rem;
-    font-family: 'Helvetica Neue'
+    font-family: 'Helvetica Neue';
 
     &:hover {
       background-color: white;
       color: #2196f3;
     }
 
-    ${props => props.type === 'crazy' ? `background-color: #00ffff; color: #ff00ff` : null}
-  `
+    ${props => (props.type === 'crazy') ? `background-color: #00ffff; color: #ff00ff` : null}
+  `;
 
   return(
     <StyledButton onClick={() => props.function(parseInt(props.amount))}>
@@ -27,3 +28,4 @@ function Button(props) {
 }
 
 export default Button;
+

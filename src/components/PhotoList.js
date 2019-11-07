@@ -5,6 +5,7 @@ import Button from './Button';
 import Header from './Header';
 import Description from './Description';
 import Photo from './Photo';
+import Carousel from './Carousel';
 
 function PhotoList() {
 
@@ -36,21 +37,17 @@ function PhotoList() {
 
   return (
      <div className='photos-container'>
+       <Carousel>
+        <Button function={changePic} amount='-1' text="Previous day's photo"/>
+        <Photo src={photo.url} alt={photo.title}/>
+        <Button function={changePic} amount='1' text="Next day's photo"/>
+      </Carousel>
+      <Button type='crazy' function={randomPic} text='Random photo'/>
       <Header title={photo.title} 
               owner={photo.copyright}
               date={parseDate(date)}/>
-       <div className='button-container'>
-         <div className='prev-next-pair'>
-          <Button function={changePic} amount='-1' text="Previous day's photo"/>
-          { dateIndex !== dateArray.length - 1 && 
-          <Button function={changePic} amount='1' text="Next day's photo"/>}
-         </div>
-         <Button type='crazy' function={randomPic} text='Random photo'/>
-       </div>
-
-       <Photo src={photo.url} alt={photo.title}/>
        <Description content={photo.explanation}/>
-    </div>
+     </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import getDateArray from '../DateArray';
+import Button from './Button';
 
 function PhotoList() {
 
@@ -19,24 +20,11 @@ function PhotoList() {
       .catch( error => console.log('Oops!', error));
   }, [date])
 
-  function prevPic(){
-    setDateIndex(dateIndex - 1)
-    console.log(dateIndex);
-    setDate(dateArray[dateIndex]);
-  }
-
-  function nextPic(){
-    setDateIndex(dateIndex + 1)
-    console.log(dateIndex);
-    setDate(dateArray[dateIndex]);
-  }
-
   function changePic(amount){
     setDateIndex(dateIndex + amount)
     console.log(dateIndex);
     setDate(dateArray[dateIndex]);
   }
-
 
   return (
      <div className='photos-container'>
@@ -45,17 +33,8 @@ function PhotoList() {
        <h3>{parseDate(date)}</h3>
 
        <div className='button-container'>
-         <button className='previous change-img-button' 
-                onClick={ () => {
-                  // prevPic();
-                  changePic(-1);
-                }}>Previous day's photo</button>
-         <button className='next change-img-button'
-                onClick={ () => {
-                  // nextPic();
-                  changePic(1);
-                }}
-                >Next day's photo</button>
+         <Button function={changePic} amount='-100' text="Previous day's photo"/>
+         <Button function={changePic} amount='1' text="Next day's photo"/>
        </div>
 
        <img src={photo.url}/>

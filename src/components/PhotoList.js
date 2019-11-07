@@ -14,15 +14,19 @@ function PhotoList() {
   useEffect( () => {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=XscPqNahxbapakq5OHKTCSm3Hdyt7IBVf7ZUljNO&date=${date}`)
       .then( response => {
-        // console.log(response);
         setPhoto(response.data);
       })
       .catch( error => console.log('Oops!', error));
   }, [date])
 
-  function changePic(amount){
-    setDateIndex(dateIndex + amount)
-    console.log(dateIndex);
+  function changePic(amount) {
+    setDateIndex(dateIndex + amount);
+    setDate(dateArray[dateIndex]);
+  }
+
+  function randomPic() {
+    const rand = Math.floor( Math.random() * dateArray.length );
+    setDateIndex(rand);
     setDate(dateArray[dateIndex]);
   }
 
@@ -33,8 +37,9 @@ function PhotoList() {
        <h3>{parseDate(date)}</h3>
 
        <div className='button-container'>
-         <Button function={changePic} amount='-100' text="Previous day's photo"/>
+         <Button function={changePic} amount='-1' text="Previous day's photo"/>
          <Button function={changePic} amount='1' text="Next day's photo"/>
+         <Button function={randomPic} text='Random photo'/>
        </div>
 
        <img src={photo.url}/>

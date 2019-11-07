@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import getDateArray from '../DateArray';
 import Button from './Button';
+import Header from './Header';
 
 function PhotoList() {
 
@@ -32,13 +33,18 @@ function PhotoList() {
 
   return (
      <div className='photos-container'>
-       <h2>{photo.title}</h2>
+       {/* <h2>{photo.title}</h2>
        <h3>{photo.copyright}</h3> 
-       <h3>{parseDate(date)}</h3>
-
+       <h3>{parseDate(date)}</h3> */}
+      <Header title={photo.title} 
+              owner={photo.copyright}
+              date={parseDate(date)}/>
        <div className='button-container'>
-         <Button function={changePic} amount='-1' text="Previous day's photo"/>
-         <Button function={changePic} amount='1' text="Next day's photo"/>
+         <div className='prev-next-pair'>
+          <Button function={changePic} amount='-1' text="Previous day's photo"/>
+          { dateIndex !== dateArray.length - 1 && 
+          <Button function={changePic} amount='1' text="Next day's photo"/>}
+         </div>
          <Button function={randomPic} text='Random photo'/>
        </div>
 

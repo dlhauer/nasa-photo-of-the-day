@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from "react";
 import "./App.css";
 import PhotoList from './components/PhotoList';
+import styled from 'styled-components';
+
+const AppDiv = styled.div`
+  font-family: 'Helvetica Neue';
+`
 
 function App() {
   return (
-    <div className="App">
+    <AppDiv className="App">
       <PhotoList/>
-    </div>
+    </AppDiv>
   );
 }
 

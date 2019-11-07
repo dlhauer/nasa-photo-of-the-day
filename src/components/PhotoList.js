@@ -18,6 +18,7 @@ function PhotoList() {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=XscPqNahxbapakq5OHKTCSm3Hdyt7IBVf7ZUljNO&date=${date}`)
       .then( response => {
         setPhoto(response.data);
+        return () => console.log('Helloooo!');
       })
       .catch( error => console.log('Oops!', error));
   }, [date])
@@ -44,7 +45,7 @@ function PhotoList() {
           { dateIndex !== dateArray.length - 1 && 
           <Button function={changePic} amount='1' text="Next day's photo"/>}
          </div>
-         <Button function={randomPic} text='Random photo'/>
+         <Button type='crazy' function={randomPic} text='Random photo'/>
        </div>
 
        <Photo src={photo.url} alt={photo.title}/>

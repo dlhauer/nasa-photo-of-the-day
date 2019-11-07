@@ -4,6 +4,7 @@ import getDateArray from '../DateArray';
 import Button from './Button';
 import Header from './Header';
 import Description from './Description';
+import Photo from './Photo';
 
 function PhotoList() {
 
@@ -46,9 +47,8 @@ function PhotoList() {
          <Button function={randomPic} text='Random photo'/>
        </div>
 
-       <img src={photo.url}/>
+       <Photo src={photo.url} alt={photo.title}/>
        <Description content={photo.explanation}/>
-       {/* <p>{photo.explanation}</p> */}
     </div>
   );
 };

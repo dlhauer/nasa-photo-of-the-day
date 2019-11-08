@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
+import PhotoList from './components/PhotoList';
+import styled from 'styled-components';
+
+const AppDiv = styled.div`
+  font-family: 'Helvetica Neue';
+`
 
 function App() {
   return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
-    </div>
+    <AppDiv className="App">
+      <PhotoList/>
+    </AppDiv>
   );
 }
 

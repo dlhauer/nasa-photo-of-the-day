@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -19,7 +22,7 @@
   color: white;
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
 }
 
@@ -30,4 +33,26 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.photos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+font-family: 'Montserrat', sans-serif;
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+button {
+  margin: 10px;
+}
+
+h1, h2, h3 {
+  margin: 0.5rem;
 }
